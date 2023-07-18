@@ -22,3 +22,5 @@ Thanks to LA Jonathan Leverenz who also helped me figure out a clearer way to co
 I used (https://www.w3resource.com/python-exercises/dictionary/python-data-type-dictionary-exercise-80.php#:~:text=Use%20max()%20with%20the,value%20in%20the%20given%20dictionary) to find the winner of the election.
 
 And again used (https://www.pythontutorial.net/python-basics/python-create-text-file/) for creating the txt file with the analysis results. 
+
+**And special thanks to TA Sam Espe for helping me add my gitignore after the fact and walking through me through the steps of getting my assignment synced into github.
