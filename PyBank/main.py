@@ -13,6 +13,7 @@ with open(budget_csv,'r') as csvfile:
     
    #setup counting variables and lists
     profit_list=[]
+    months = []
     total_months=0
     net_profit=0
        
@@ -23,6 +24,7 @@ with open(budget_csv,'r') as csvfile:
     
     #create list of profit/losses
         profit_list.append(profits)
+        months.append(date)
 
      #count the number of months (https://realpython.com/python-csv/)   
         total_months+=1
@@ -50,8 +52,16 @@ with open(budget_csv,'r') as csvfile:
         greatest_increase=max(change_list)
         greatest_decrease=min(change_list)
 
+#find the corresponding month for the greatest increase
+    index_of_greatest_increase = change_list.index(greatest_increase)
+    month_of_greatest_increase = months[index_of_greatest_increase + 1]
+
+#find the corresponding month for the greatest decrease
+    index_of_greatest_decrease = change_list.index(greatest_decrease)
+    month_of_greatest_decrease = months[index_of_greatest_decrease + 1]
+
 #calculate the average change
-        average_change=round(total_changes/(total_months-1),2)
+    average_change=round(total_changes/(total_months-1),2)
         
 #print results in the terminal
     print("Financial Analysis")
@@ -59,8 +69,8 @@ with open(budget_csv,'r') as csvfile:
     print(f'Total Months: {str(total_months)}')
     print(f'Total: ${str(net_profit)}')
     print(f'Average Change: ${str(average_change)}')
-    print(f'Greatest increase: ${str(greatest_increase)}')
-    print(f'Greatest decrease: ${str(greatest_decrease)}')
+    print(f'Greatest increase: {month_of_greatest_increase} - ${str(greatest_increase)}')
+    print(f'Greatest decrease: {month_of_greatest_decrease} - ${str(greatest_decrease)}')
 
 #printing results into a txt file (https://www.pythontutorial.net/python-basics/python-create-text-file/)
 with open('analysis/analysis.txt','w') as f:
@@ -69,6 +79,6 @@ with open('analysis/analysis.txt','w') as f:
     print(f'Total Months: {str(total_months)}', file=f)
     print(f'Total: ${str(net_profit)}', file=f)
     print(f'Average Change: ${str(average_change)}', file=f)
-    print(f'Greatest increase: ${str(greatest_increase)}', file=f)
-    print(f'Greatest decrease: ${str(greatest_decrease)}', file=f)
+    print(f'Greatest increase: {month_of_greatest_increase} - ${str(greatest_increase)}', file=f)
+    print(f'Greatest decrease: {month_of_greatest_decrease} - ${str(greatest_decrease)}', file=f)
     f.close()
